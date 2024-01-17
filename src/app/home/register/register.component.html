@@ -1,0 +1,83 @@
+<div class="w-full h-[90vh] bg-opacity-50 bg-gradient-to-b from-gray-900 to-black flex flex-col items-center justify-center">
+
+    <div class="text-white  w-[90%] p-5 flex flex-col items-center justify-around font-Poppins rounded-lg customShadow 800px:w-[50%] 1000px:w-[40%] 1200px:w-[30%]">
+        <h1 class="text-[25px] font-[500] py-2">
+            Join to KB Learning
+        </h1>
+
+        <form [formGroup] = "registerForm" (ngSubmit)="onRegisterSubmit()">
+            <div class="w-full mt-5 relative mb-1">
+                <!-- PersonName -->
+                <label for="PersonName" class="text-[16px] font-Poppins text-white font-[500]">Enter your Name</label>
+                <input type="text" id="PersonName" placeholder="Jhon12B"
+                    class="w-full text-white bg-transparent border rounded h-[40px] px-2 outline-none mt-[10px] font-Poppins font-[400]"
+                    formControlName="PersonName">
+                <span class="text-red-600 text-[16px] font-poppins" *ngIf="(register_personNameControl.touched || isFormSubmitted) && (register_personNameControl.errors?.['required'])">
+                    Person Name Can't be blank
+                </span>
+            </div>
+
+            <div class="w-full mt-5 relative mb-1">
+                <!-- Email -->
+                <label for="Email" class="text-[16px] font-Poppins text-white font-[500]">Enter your Email</label>
+                <input id="Email" type="email" placeholder="example@gmail.com"
+                    class="w-full text-white bg-transparent border rounded h-[40px] px-2 outline-none mt-[10px] font-Poppins font-[400]"
+                    formControlName = "Email">
+                <span class="text-red-600 text-[16px] font-poppins" *ngIf="(register_emailControl.touched || isFormSubmitted) && (register_emailControl.errors?.['required'])">
+                    Email can't be blank
+                </span>
+
+                <span class="text-red-600 text-[16px] font-poppins" *ngIf="(register_emailControl.touched || isFormSubmitted) && (register_emailControl.errors?.['email'])">
+                    Enter a valid EmailAddress
+                </span>
+            </div>
+            
+            <div class="w-full mt-5 relative mb-1">
+                <!-- Password -->
+                <label for="Password" class="text-[16px] font-Poppins text-white font-[500]">Enter your Password</label>
+                <input id="Password" type="password" placeholder="Pass!@123"
+                    class="w-full text-white bg-transparent border rounded h-[40px] px-2 outline-none mt-[10px] font-Poppins font-[400]"
+                formControlName="Password">
+                <span class="text-red-600 text-[16px] font-poppins" *ngIf="(isFormSubmitted || register_passwordControl.touched) && (register_passwordControl.errors?.['required'])">
+                    Password Can't be blank
+                </span>
+            </div>
+
+            <div class="w-full mt-5 relative mb-1">
+                <!--Confirm Password -->
+                <label for="ConfirmPassword" class="text-[16px] font-Poppins text-white font-[500]">Confirm your Password</label>
+                <input id="ConfirmPassword" type="password" placeholder="Pass!@123"
+                    class="w-full text-white bg-transparent border rounded h-[40px] px-2 outline-none mt-[10px] font-Poppins font-[400]"
+                formControlName="ConfirmPassword">
+                <span class="text-red-600 text-[16px] font-poppins" *ngIf="(isFormSubmitted || register_confirmPasswordControl.touched) && (register_confirmPasswordControl.errors?.['required'])">
+                    Confirm Password can't be blank
+                </span>
+            </div>
+
+            <div class="w-full mt-5">
+                <input type="submit" value="Sign Up"
+                class="flex flex-row justify-center items-center py-3 px-6 rounded-full cursor-pointer bg-[#2190ff] min-h-[45px] w-full text-[16px] font-Poppins font-semibold">
+            </div>
+
+            <br>
+
+            <h5 class="text-center pt-4 font-Poppins text-[14px] text-white font-semibold">
+                Or join with
+            </h5>
+
+            <div class="flex items-center justify-center my-3">
+                <span>Google </span>
+                <span> Github</span>
+            </div>
+
+            <h5 class="text-center pt-4 font-Poppins text-[14px] font-semibold">
+                Already have an account?
+                <a routerLink="/login" class="text-[#2190ff] pl-1 cursor-pointer">Sign in</a>
+            </h5>
+            <br>
+
+        </form>
+    </div>
+
+</div>
+

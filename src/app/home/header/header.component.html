@@ -1,0 +1,86 @@
+<div class="w-full sticky top-0 z-[100] drop-shadow-lg">
+  <div
+    class="bg-opacity-50 bg-gradient-to-l from-gray-900 to-black w-full h-[10vh] z-[80] drop-shadow-xl transition duration-500 text-white"
+  >
+    <div class="w-[95%] 800px:w-[92%] m-auto py-2 h-full">
+      <div class="w-full h-[80px] flex items-center justify-between">
+        <a href="#" class="text-[25px] font-Poppins font-[500] text-white">
+          KB Learning
+        </a>
+        <div class="flex items-center">
+          <div class="hidden 800px:flex">
+            <a routerLink="{{ item.url }}" *ngFor="let item of NavItems">
+              <span class="text-[18px] px-6 font-Poppins font-[400] hover:text-slate-400">
+                {{ item.name }}
+              </span>
+            </a>
+
+            <a *ngIf="accountService.currentUserName === null || accountService.currentUserName === '' || accountService.currentUserName === undefined " [routerLink]="[ '/login' ]">
+              <span
+              class="material-symbols-outlined mx-5 hover:text-slate-400"
+              style="font-size: 30px"
+            >
+              person
+            </span>
+            </a>
+
+            <a *ngIf="accountService.currentUserName !== null && accountService.currentUserName !== '' && accountService.currentUserName !== undefined"  [routerLink]="[ '/logout' ]">
+              <span
+              class="material-symbols-outlined mx-5 hover:text-slate-400"
+              style="font-size: 30px"
+            >
+              person
+            </span>
+            </a>
+           
+          </div>
+        </div>
+        <div class="800px:hidden flex">
+          <span
+            class="material-symbols-outlined cursor-pointer"
+            style="font-size: 30px"
+            (click)="toggleMenuBar($event)"
+            [style.display]="IsNavbarOpen ? 'none' : 'block'"
+          >
+            menu
+          </span>
+          
+          <!-- Mobile nav -->
+          <div
+            class="absolute top-0 right-0 w-[100vw] h-[100vh] bg-opacity-50 bg-gradient-to-l from-gray-900 to-black 800px:hidden"
+            [style.display]="IsNavbarOpen ? 'block' : 'none'"
+          >
+            <div class="flex flex-col items-start justify-around w-full h-[50%] mt-5">
+              <span
+                class="material-symbols-outlined cursor-pointer absolute top-5 right-5"
+                style="font-size: 30px"
+                (click)="toggleMenuBar($event)"
+                [style.display]="IsNavbarOpen ? 'block' : 'none'"
+              >
+                close
+              </span>
+              <a routerLink="{{ item.url }}" *ngFor="let item of NavItems">
+                <span class="text-[22px] px-8 font-Poppins font-[400] hover:text-slate-400" (click)="toggleMenuBar($event)">
+                  {{ item.name }}
+                </span>
+              </a>
+
+              <a routerLink="login">
+                <span
+                  class="material-symbols-outlined px-8 cursor-pointer"
+                  style="font-size: 30px"
+                  (click)="toggleMenuBar($event)"
+                >
+                  person
+                </span>
+              </a>
+      
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

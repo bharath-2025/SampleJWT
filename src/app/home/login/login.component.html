@@ -1,0 +1,62 @@
+<div class="w-full h-[90vh] bg-opacity-50 bg-gradient-to-b from-gray-900 to-black flex flex-col items-center justify-center">
+
+    <div class="text-white  w-[90%] p-5 flex flex-col items-center justify-around font-Poppins rounded-lg customShadow 800px:w-[50%] 1000px:w-[40%] 1200px:w-[30%]">
+        <h1 class="text-[25px] font-[500] py-2">
+            Login with KB Learning
+        </h1>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+            <!-- Email -->
+            <div class="w-full mt-5 relative mb-1">
+                <label for="Email" class="text-[16px] font-Poppins text-white font-[500]">Enter your Email</label>
+                <input type="email" id="Email" placeholder="example@gmail.com"
+                    class="w-full text-white bg-transparent border rounded h-[40px] px-2 outline-none mt-[10px] font-Poppins font-[400]"
+                    formControlName="Email">
+                    
+                <span class="text-red-600 text-[16px] font-poppins" *ngIf="(login_emailControl.touched || isLoginFormSubmitted) && (login_emailControl.errors?.['required'])">
+                    Email can't be blank
+                </span>
+
+                <span class="text-red-600 text-[16px] font-poppins" *ngIf="(login_emailControl.touched || isLoginFormSubmitted) && (login_emailControl.errors?.['email'])">
+                    Enter a valid EmailAddress
+                </span>
+            </div>
+            
+            <div class="w-full mt-5 relative mb-1">
+                <label for="Password" class="text-[16px] font-Poppins text-white font-[500]">Enter your Password</label>
+                <input type="password" id="Password" placeholder="Pass!@123"
+                    class="w-full text-white bg-transparent border rounded h-[40px] px-2 outline-none mt-[10px] font-Poppins font-[400]"
+                    formControlName="Password">
+
+                <span class="text-red-600 text-[16px] font-poppins" *ngIf="(login_passwordControl.touched || isLoginFormSubmitted) && (login_passwordControl.errors?.['required'])">
+                    Password Can't be blank
+                </span>
+            
+            </div>
+
+            <div class="w-full mt-5">
+                <input type="submit" value="Login"
+                class="flex flex-row justify-center items-center py-3 px-6 rounded-full cursor-pointer bg-[#2190ff] min-h-[45px] w-full text-[16px] font-Poppins font-semibold">
+            </div>
+
+            <br>
+
+            <h5 class="text-center pt-4 font-Poppins text-[14px] text-white font-semibold">
+                Or join with
+            </h5>
+
+            <div class="flex items-center justify-center my-3">
+                <span>Google </span>
+                <span> Github</span>
+            </div>
+
+            <h5 class="text-center pt-4 font-Poppins text-[14px] font-semibold">
+                Not having an account? 
+                <a routerLink="/register" class="text-[#2190ff] pl-1 cursor-pointer">Sign Up</a>
+            </h5>
+            <br>
+
+        </form>
+    </div>
+
+</div>
